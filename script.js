@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 
     $('.modifier').click(function () {
-        this.append('');
+        this.append('<LABEL for="modif"> Nouveau nom de la categorie:<input type = "text" name="modif" id="modif"> </LABEL> <button id="validation"> Valider </button> </br> ');
         
         
     });
