@@ -21,15 +21,15 @@ if (!empty($_POST['user']) && !empty($_POST['mdp'])) {
     $mdp = $_POST['mdp'];
 
     $bdd = new PDO('mysql:host=localhost;dbname=projet', 'root', '');
-    $mdp1 = $bdd->query("SELECT mdp FROM client WHERE pseudo = '$user'")->fetchAll();
+    $mdp1 = $bdd->query("SELECT mdp, id FROM client WHERE pseudo = '$user'")->fetchAll();
     if ($mdp1[0][0]== $mdp)
     {
-        $_SESSION['droit'] = 1; 
+        $_SESSION['droit'] = $mdp1[0][1]; 
         header('Location: accueil.php');   
     }
     elseif($user == 'admin' && $mdp == 'admin')
     {
-        $_SESSION['droit'] = 2; 
+        $_SESSION['droit'] = 'admin'; 
         echo $_SESSION['droit'];
         header('Location: accueil.php');   
     }

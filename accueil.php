@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['droit'])) {
     header('Location: index.php');
 }
-elseif ($_SESSION['droit'] == 2)
+elseif ($_SESSION['droit'] == 'admin')
 {
     echo "vous etes admin!";
 }
