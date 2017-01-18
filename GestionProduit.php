@@ -42,14 +42,13 @@ $produit = $bdd->query("SELECT produit.nom, produit.prix, produit.details, categ
 FROM `produit` 
 JOIN categorie ON id_categorie = categorie.id")->fetchAll()or die(print_r($bdd->errorInfo(), true));
 foreach ($produit as $key => $value) {
-    echo $value['nom']."<br>".$value['prix']."<br>".$value['nom']."<br>".$value['details']."<br>";
+    echo $value[0]."<br>".$value['prix']."<br>".$value['nom']."<br>".$value['details']."<br>";
     ?> 
-    <input type="submit" value="Supprimer" class="supprimer" id="<?php echo $value['nom']; ?>"/> 
+    <input type="submit" value="Supprimer" class="supprimer" id="<?php echo $value[0]; ?>"/> 
     <input type="submit" value="Modification" class="modifier" id="<?php echo $value['nom']; ?>"/> </br> </br>
     <div id="ChampModif"> </div>
     <?php
 }
-
 ?>
 <DIV id='message'>
 
