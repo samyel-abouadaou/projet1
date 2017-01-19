@@ -8,21 +8,22 @@ $bdd = new PDO('mysql:host=localhost;dbname=projet', 'root', '');
         <script src='script4.js'></script>
     </HEADER>
     <BODY>
-
+        <form action="" method="POST">
+            <label for="recherche">Rechercher: <input type="text" id="recherche" name="recherche"></LABEL><br>
+            <LABEL for='categorie'> Selectionner la categorie du produit:<SELECT name="categorie" id="categorie" size="1">
+                    <?php
+                    $categorie = $bdd->query("SELECT * FROM categorie")->fetchAll()or die(print_r($bdd->errorInfo(), true));
+                    foreach ($categorie as $key => $value) {
+                        echo '<OPTION value="' . $value['id'] . '">' . $value['nom'];
+                    }
+                    ?>
+                </SELECT> </LABEL><br>
+            <INPUT type="button" value="Rechercher" id="rechercher"><br><br>
+        </form>
     </BODY>
 </HTML>
 
-<?php
 
-$produit = $bdd->query("SELECT produit.id, produit.nom, produit.prix, produit.details, categorie.nom
-FROM `produit` 
-JOIN categorie ON id_categorie = categorie.id")->fetchAll()or die(print_r($bdd->errorInfo(), true));
-foreach ($produit as $key => $value) {
-    echo "Nom du produit: ".$value[0]."<br> Prix :".$value['prix']."€"."<br> Categorie: ".$value['nom']."<br> Details sur le produit: ".$value['details']."<br>";
-    ?> <input type="submit" value="Ajouter" class='ajout' id='<?php echo '2'; ?>' name='<?php echo $value['id']; ?>' /> <br> <br><?php
-}
-
-?>
 <DIV id='message'>
 
 </DIV>

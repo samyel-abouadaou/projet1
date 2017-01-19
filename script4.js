@@ -1,6 +1,19 @@
 $(document).ready(function () {
-
-    $('.ajout').click(function () {
+    
+    $('#rechercher').click(function () {
+        $.post(
+                "ScriptRecherche.php",
+                {
+                    recherche: $('#recherche').val(),
+                    categorie: $('#categorie').val()
+                },
+                function (data1) {
+                    $('#message').html(data1);
+                }
+        );
+    });
+    
+         $('body').on('click','.ajout', function () {
         $.post(
                 "ScriptCommande.php",
                 {
@@ -8,10 +21,9 @@ $(document).ready(function () {
                     produit: this.name
                 },
                 function (data) {
-                   $('#message').append('Le produit a bien été ajouté à votre panier!');
+                    $('#message').append('Le produit a bien été ajouté à votre panier!');
                 }
         );
     });
-
 });
 

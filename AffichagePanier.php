@@ -32,4 +32,3 @@ echo "Le prix total: ".$prix."€.<br><br><br>";
 <DIV id='message'>
 
 </DIV>
-
