@@ -17,11 +17,10 @@ $(document).ready(function () {
         $.post(
                 "ScriptCommande.php",
                 {
-                    commande: this.id,
                     produit: this.name
                 },
                 function (data) {
-                    $('#message').append('Le produit a bien été ajouté à votre panier!');
+                    $('#message').append('Le produit a bien été ajouté à votre panier!'+data);
                 }
         );
     });
